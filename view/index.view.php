@@ -22,16 +22,19 @@
     $skrydisAtgal = ['Vilnius', 'Londonas', 'Milanas', 'Berlynas'];
 
     if(isset($_POST['submit'])){
-        foreach($_POST as $value){
-            echo "$value<br>";
-        }
+        foreach ($_POST as $value){
+        //echo "$value<br>";
+        //var_dump($_POST);
+        // var_dump($_POST['price']);
+    }
+}
 ?>
 
 <div class = "container ticket-info">
     <h3>
         Lektuvo bilietas
     </h3>
-<form method = "post" action = "view/ticket.view.php">
+    <form method="post" action="view/ticket.view.php">
     <div class="form-group">
         <select name = "skrydzioNumeriai" class = "form-control">
             <option selected disabled>--Pasirinkite skrydzio Nr.--</option>
@@ -66,51 +69,26 @@
     </div>
     <div class="form-group">
         <label>Vardas</label>
-        <input class="form-control" id="name" name = "name">
+        <input class="form-control" id="vardas" name = "vardas">
     </div>
     <div class="form-group">
         <label>Pavarde</label>
-        <input class="form-control" id="lastName" name = "lastName">
+        <input class="form-control" id="pavarde" name = "pavarde">
     </div>
     <div class="form-group">
         <label>Asmens kodas</label>
-        <input type = "number" class="form-control" id="personalID" name = "personalID">
+        <input type = "number" class="form-control" id="asmensKodas" name = "asmensKodas">
     </div>
     <div class="form-group">
         <label>Kaina</label>
-        <input type = "number" class="form-control" id="price" name = "price">
+        <input type = "number" class="form-control" id="kaina" name = "kaina">
     </div>
     <div class="form-group">
         <label>Pastabos</label>
-        <textarea class="form-control" id="notes" name = "notes" rows="3"></textarea>
+        <textarea class="form-control" id="pastabos" name = "pastabos" rows="3"></textarea>
     </div>
     <button type="submit" class="btn btn-primary" name = "submit">Spausdinti</button>
 </form>
-</div>
-
-<div class = "container ticket">
-    <div class = "row">
-        <div class = "col-sm-12">Bilieto informacija</div>
-    </div>
-    <div class = "row">
-        <div class = "col-sm">
-            <div class = "row">Skrydzio Numeris</div>
-            <div class = "row">Skrydis pirmyn</div>
-            <div class = "row">Skrydis atgal</div>
-        </div>
-        <div class = "col-sm">
-            <div class = "row">Vardas</div>
-            <div class = "row">Pavarde</div>
-            <div class = "row">Asmens kodas</div>
-        </div>
-        <div class = "col-sm">
-            <div class = "row">Skrydzio perziura</div>
-            <div class = "row">Bilieto kaina</div>
-            <div class = "row">Bagazo kaina</div>
-            <div class = "row"><p><?=$bilietoKaina;?></p></div>
-        </div>
-    </div>
-    <div class = "row">Pastabos</div>
 </div>
 
 <!-- Optional JavaScript -->

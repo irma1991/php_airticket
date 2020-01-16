@@ -9,15 +9,19 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="view/css/styles.css">
-    <title>Forma</title>
+    <link rel="stylesheet" href="css/styles.css">
+
 </head>
 <body>
+
+<?php var_dump($_POST);?>
 <?php
-$kilogramai = intval($_POST['bagazas']);
-$bilietoKaina = intval($_POST['price']);
-if($kilogramai >= 20){
-$bilietoKaina += 30;
+$kaina = intval($_POST['kaina']);
+$bagazas = intval($_POST['bagazas']);
+
+    if ($bagazas >= 20){
+        $kaina+=30;
+    }
 ?>
 
 <div class = "container ticket">
@@ -39,7 +43,7 @@ $bilietoKaina += 30;
             <div class = "row">Skrydzio perziura</div>
             <div class = "row">Bilieto kaina</div>
             <div class = "row">Bagazo kaina</div>
-            <div class = "row"><p><?=$bilietoKaina;?></p></div>
+            <div class = "row">Bendra kaina</div>
         </div>
     </div>
     <div class = "row">Pastabos</div>
