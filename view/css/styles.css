@@ -1,0 +1,10 @@
+h3{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.ticket{
+    height: 150px;
+    background-color: #8fd19e;
+}
