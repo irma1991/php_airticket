@@ -17,7 +17,7 @@
 <?php
 
     $skrydzioNumeriai = ['GH45213', 'TH45875', 'KL96548', 'CF74523'];
-    $bagazas = [5, 10, 20, 30];
+    $bagazas = ['10 kg', '15 kg', '20 kg', '25 kg', '30 kg'];
     $skrydisPirmyn = ['Vilnius', 'Londonas', 'Milanas', 'Berlynas'];
     $skrydisAtgal = ['Vilnius', 'Londonas', 'Milanas', 'Berlynas'];
 
@@ -27,6 +27,12 @@
         //var_dump($_POST);
         // var_dump($_POST['price']);
     }
+
+        if (empty($_POST["skrydzioNumeriai"])) {
+            $skrydzioNrError = "Privalomas laukas, prasome uzpildyti";
+        } else {
+            $skrydzioNr = $_POST["skrydzioNumeriai"];
+        }
 }
 ?>
 

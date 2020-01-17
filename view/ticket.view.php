@@ -16,12 +16,21 @@
 
 <?php var_dump($_POST);?>
 <?php
-$kaina = intval($_POST['kaina']);
+$skrydzioNr = $_POST['skrydzioNumeriai'];
+$skrydisPirmyn = $_POST['skrydisPirmyn'];
+$skrydisAtgal = $_POST['skrydisAtgal'];
+$vardas = $_POST['vardas'];
+$pavarde = $_POST['pavarde'];
+$asmensKodas = $_POST['asmensKodas'];
+$bilietoKaina = $_POST['kaina'];
 $bagazas = intval($_POST['bagazas']);
+$bendraKaina = $_POST['kaina'];
 
     if ($bagazas >= 20){
-        $kaina+=30;
+        $bendraKaina+=30;
     }
+
+$pastabos = $_POST['pastabos'];
 ?>
 
 <div class = "container ticket">
@@ -30,23 +39,24 @@ $bagazas = intval($_POST['bagazas']);
     </div>
     <div class = "row">
         <div class = "col-sm">
-            <div class = "row">Skrydzio Numeris</div>
-            <div class = "row">Skrydis pirmyn</div>
-            <div class = "row">Skrydis atgal</div>
+            <div class = "row"><?=$skrydzioNr?></div>
+            <div class = "row"><?=$skrydisPirmyn?></div>
+            <div class = "row"><?=$skrydisAtgal?></div>
         </div>
         <div class = "col-sm">
-            <div class = "row">Vardas</div>
-            <div class = "row">Pavarde</div>
-            <div class = "row">Asmens kodas</div>
+            <div class = "row"><?=$vardas?></div>
+            <div class = "row"><?=$pavarde?></div>
+            <div class = "row"><?=$asmensKodas?></div>
         </div>
         <div class = "col-sm">
             <div class = "row">Skrydzio perziura</div>
-            <div class = "row">Bilieto kaina</div>
-            <div class = "row">Bagazo kaina</div>
-            <div class = "row">Bendra kaina</div>
+            <div class = "row"><?=$bilietoKaina?></div>
+            <div class = "row"><?=$bagazas?>kg</div>
+            <div class = "row"><?=$bendraKaina?></div>
         </div>
     </div>
-    <div class = "row">Pastabos</div>
+    <div class = "row"><?=$pastabos?></div>
+    <a href = "../index.php" ><button type="submit" class="btn btn-primary" name = "submit">Grizti</button></a>
 </div>
 
 <!-- Optional JavaScript -->
