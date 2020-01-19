@@ -20,27 +20,61 @@
     $bagazas = ['10 kg', '15 kg', '20 kg', '25 kg', '30 kg'];
     $skrydisPirmyn = ['Vilnius', 'Londonas', 'Milanas', 'Berlynas'];
     $skrydisAtgal = ['Vilnius', 'Londonas', 'Milanas', 'Berlynas'];
+    $validation_errors=[];
 
-    if(isset($_POST['submit'])){
-        foreach ($_POST as $value){
-        //echo "$value<br>";
-        //var_dump($_POST);
-        // var_dump($_POST['price']);
+    if (isset($_POST['submit'])) {
+
+        if (!isset($_POST['skrydzioNumeriai'])) {
+            $validation_errors[] = "Privalomas laukas: įveskite skrydžio numerį.";
+        }
+
+        if (!isset($_POST['bagazas'])) {
+            $validation_errors[] = "Privalomas laukas: įveskite bagažo kiekį.";
+        }
+
+        if (!preg_match('/\w{1,100}$/', $_POST['vardas'])) {
+            $validation_errors[] = "Įvestas vardas neatitinka formato.";
+        } else {
+            $_POST['vardas'];
+        }
+
+        if (!preg_match('/\w{1,100}/', $_POST['pavarde'])) {
+            $validation_errors[] = "Įvesta pavardė neatitinka formato.";
+        } else {
+            $_POST['pavarde'];
+        }
+
+        if (!preg_match('/^([3-6]\d{10})$/', $_POST['asmensKodas'])) {
+            $validation_errors[] = "Įvestas asmens kodas neatitinka formato.";
+        } else {
+            $_POST['asmensKodas'];
+        }
+
+        if (!preg_match('/[\w\s{50,1000}]/i', $_POST['pastabos'])) {
+            $validation_errors[] = "Įvesta pastaba neatitinka formato.";
+        } else {
+            $_POST['pastabos'];
+        }
     }
 
-        if (empty($_POST["skrydzioNumeriai"])) {
-            $skrydzioNrError = "Privalomas laukas, prasome uzpildyti";
-        } else {
-            $skrydzioNr = $_POST["skrydzioNumeriai"];
-        }
-}
 ?>
+
+<?php if($validation_errors):?>
+    <div class="errors">
+        <ul>
+            <?php foreach($validation_errors as $error) :?>
+                <li><?= $error; ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+
+<?php endif;?>
 
 <div class = "container ticket-info">
     <h3>
         Lektuvo bilietas
     </h3>
-    <form method="post" action="view/ticket.view.php">
+    <form method="post">
     <div class="form-group">
         <select name = "skrydzioNumeriai" class = "form-control">
             <option selected disabled>--Pasirinkite skrydzio Nr.--</option>
@@ -93,8 +127,56 @@
         <label>Pastabos</label>
         <textarea class="form-control" id="pastabos" name = "pastabos" rows="3"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary" name = "submit">Spausdinti</button>
+    <button type="submit" class="btn btn-primary" name = "submit">Pateikti</button>
+
+        <?php if (isset($_POST["submit"]) && !$validation_errors):?>
+
+            <?php $skrydzioNumeris = $_POST['skrydzioNumeriai'];
+            $skrydisPirmyn = $_POST['skrydisPirmyn'];
+            $skrydisAtgal = $_POST['skrydisAtgal'];
+            $vardas = $_POST['vardas'];
+            $pavarde = $_POST['pavarde'];
+            $asmensKodas = $_POST['asmensKodas'];
+            $bilietoKaina = $_POST['kaina'];
+            $bagazas = intval($_POST['bagazas']);
+            $bendraKaina = $_POST['kaina'];
+            $pastabos = $_POST['pastabos'];
+
+            if ($bagazas >= 20) {
+            $bendraKaina += 30;
+            }
+        ?>
+            <button type="button" name="submit" class="btn btn-primary" data-toggle="modal" data-target="#ticket">
+                Spausdinti bilietą
+            </button>
+        <?php endif;?>
+
 </form>
+</div>
+
+<div class = "container ticket fade" id="ticket">
+    <div class = "row">
+        <div class = "col-sm-12">Bilieto informacija</div>
+    </div>
+    <div class = "row">
+        <div class = "col-sm">
+            <div class = "row">Jūsų skrydžio numeris: <?=$skrydzioNumeris?></div>
+            <div class = "row">Kryptis pirmyn: <?=$skrydisPirmyn?></div>
+            <div class = "row">Kryptis atgal: <?=$skrydisAtgal?></div>
+        </div>
+        <div class = "col-sm">
+            <div class = "row">Keleivio vardas: <?=$vardas?></div>
+            <div class = "row">Keleivio pavardė: <?=$pavarde?></div>
+            <div class = "row">Keleivio asmens kodas: <?=$asmensKodas?></div>
+        </div>
+        <div class = "col-sm">
+            <div class = "row">Skrydzio perziura</div>
+            <div class = "row">Skrydžio kaina: <?=$bilietoKaina?></div>
+            <div class = "row">Bagažo kiekis: <?=$bagazas?>kg</div>
+            <div class = "row">Bendra bilieto kaina: <?=$bendraKaina?></div>
+        </div>
+    </div>
+    <div class = "row">Pastabos: <?=$pastabos?></div>
 </div>
 
 <!-- Optional JavaScript -->

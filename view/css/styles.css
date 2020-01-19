@@ -8,3 +8,7 @@ h3{
     height: 150px;
     background-color: #8fd19e;
 }
+
+.fade, .modal-backdrop, .show{
+    opacity: 0;
+}
