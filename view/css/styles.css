@@ -6,9 +6,10 @@ h3{
 
 .ticket{
     height: 150px;
-    background-color: #8fd19e;
+    background-color: #005cbf;
 }
 
-.fade, .modal-backdrop, .show{
-    opacity: 0;
+.modal-backdrop{
+    background-color: #ffffff;
+    position: unset;
 }

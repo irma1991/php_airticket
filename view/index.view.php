@@ -147,36 +147,54 @@
             }
         ?>
             <button type="button" name="submit" class="btn btn-primary" data-toggle="modal" data-target="#ticket">
-                Spausdinti bilietą
+                Formuoti bilietą
             </button>
         <?php endif;?>
 
 </form>
 </div>
 
-<div class = "container ticket fade" id="ticket">
-    <div class = "row">
-        <div class = "col-sm-12">Bilieto informacija</div>
+<div class="modal fade" id = "ticket" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class = "container ticket">
+                    <div class = "row">
+                        <div class = "col-sm-12">Bilieto informacija</div>
+                    </div>
+                    <div class = "row">
+                        <div class = "col-sm">
+                            <div class = "row">Jūsų skrydžio numeris: <?=$skrydzioNumeris?></div>
+                            <div class = "row">Kryptis pirmyn: <?=$skrydisPirmyn?></div>
+                            <div class = "row">Kryptis atgal: <?=$skrydisAtgal?></div>
+                        </div>
+                        <div class = "col-sm">
+                            <div class = "row">Keleivio vardas: <?=$vardas?></div>
+                            <div class = "row">Keleivio pavardė: <?=$pavarde?></div>
+                            <div class = "row">Keleivio asmens kodas: <?=$asmensKodas?></div>
+                        </div>
+                        <div class = "col-sm">
+                            <div class = "row">Skrydzio perziura</div>
+                            <div class = "row">Skrydžio kaina: <?=$bilietoKaina?></div>
+                            <div class = "row">Bagažo kiekis: <?=$bagazas?>kg</div>
+                            <div class = "row">Bendra bilieto kaina: <?=$bendraKaina?></div>
+                        </div>
+                    </div>
+                    <div class = "row">Pastabos: <?=$pastabos?></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
-    <div class = "row">
-        <div class = "col-sm">
-            <div class = "row">Jūsų skrydžio numeris: <?=$skrydzioNumeris?></div>
-            <div class = "row">Kryptis pirmyn: <?=$skrydisPirmyn?></div>
-            <div class = "row">Kryptis atgal: <?=$skrydisAtgal?></div>
-        </div>
-        <div class = "col-sm">
-            <div class = "row">Keleivio vardas: <?=$vardas?></div>
-            <div class = "row">Keleivio pavardė: <?=$pavarde?></div>
-            <div class = "row">Keleivio asmens kodas: <?=$asmensKodas?></div>
-        </div>
-        <div class = "col-sm">
-            <div class = "row">Skrydzio perziura</div>
-            <div class = "row">Skrydžio kaina: <?=$bilietoKaina?></div>
-            <div class = "row">Bagažo kiekis: <?=$bagazas?>kg</div>
-            <div class = "row">Bendra bilieto kaina: <?=$bendraKaina?></div>
-        </div>
-    </div>
-    <div class = "row">Pastabos: <?=$pastabos?></div>
 </div>
 
 <!-- Optional JavaScript -->
