@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <script src="https://kit.fontawesome.com/04b00d367c.js"></script>
     <link rel="stylesheet" href="view/css/styles.css">
     <title>Forma</title>
 </head>
@@ -60,24 +61,25 @@
 ?>
 
 <?php if($validation_errors):?>
-    <div class="errors">
-        <ul>
-            <?php foreach($validation_errors as $error) :?>
-                <li><?= $error; ?></li>
+        <div class="alert alert-danger validation-erros" role="alert">
+            <ul>
+                <li>
+                    <?php foreach($validation_errors as $error) :?>
+                <li><i class="fas fa-exclamation"></i> <?= $error; ?></li>
             <?php endforeach; ?>
-        </ul>
-    </div>
+            </ul>
+        </div>
 
 <?php endif;?>
 
 <div class = "container ticket-info">
     <h3>
-        Lektuvo bilietas
+        Lėktuvo bilieto užsakymas
     </h3>
     <form method="post">
     <div class="form-group">
         <select name = "skrydzioNumeriai" class = "form-control">
-            <option selected disabled>--Pasirinkite skrydzio Nr.--</option>
+            <option selected disabled>--Pasirinkite skrydžio numerį--</option>
             <?php foreach ($skrydzioNumeriai as $skrydzioNumeris):?>
             <option value = "<?=$skrydzioNumeris?>"><?=$skrydzioNumeris?></option>
             <?php endforeach;?>
@@ -85,7 +87,7 @@
     </div>
     <div class="form-group">
         <select name = "bagazas" class = "form-control">
-            <option selected disabled>--Pasirinkite bagazo svori--</option>
+            <option selected disabled>--Pasirinkite bagažo svorį--</option>
             <?php foreach ($bagazas as $Jusubagazas):?>
                 <option value = "<?=$Jusubagazas?>"><?=$Jusubagazas?></option>
             <?php endforeach;?>
@@ -93,7 +95,7 @@
     </div>
     <div class="form-group">
         <select name = "skrydisPirmyn" class = "form-control">
-            <option selected disabled>--Pasirinkite skrydi pirmyn--</option>
+            <option selected disabled>--Pasirinkite skrydį pirmyn--</option>
             <?php foreach ($skrydisPirmyn as $JusuSkrydisPirmyn):?>
                 <option value = "<?=$JusuSkrydisPirmyn?>"><?=$JusuSkrydisPirmyn?></option>
             <?php endforeach;?>
@@ -101,7 +103,7 @@
     </div>
     <div class="form-group">
         <select name = "skrydisAtgal" class = "form-control">
-            <option selected disabled>--Pasirinkite skrydi atgal--</option>
+            <option selected disabled>--Pasirinkite skrydį atgal--</option>
             <?php foreach ($skrydisAtgal as $JusuSkrydisAtgal):?>
                 <option value = "<?=$JusuSkrydisAtgal?>"><?=$JusuSkrydisAtgal?></option>
             <?php endforeach;?>
@@ -112,7 +114,7 @@
         <input class="form-control" id="vardas" name = "vardas">
     </div>
     <div class="form-group">
-        <label>Pavarde</label>
+        <label>Pavardė</label>
         <input class="form-control" id="pavarde" name = "pavarde">
     </div>
     <div class="form-group">
@@ -154,23 +156,18 @@
 </form>
 </div>
 
-<div class="modal fade" id = "ticket" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+<div class="modal fade bd-example-modal-lg" id = "ticket" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title">Skrydžio informacija</h5>
             </div>
             <div class="modal-body">
-                <div class = "container ticket">
-                    <div class = "row">
-                        <div class = "col-sm-12">Bilieto informacija</div>
-                    </div>
+                <div class = "container-fluid ticket">
+                    <div class = "row pavadinimas"><strong>Jūsų bilietas:</strong></div>
                     <div class = "row">
                         <div class = "col-sm">
-                            <div class = "row">Jūsų skrydžio numeris: <?=$skrydzioNumeris?></div>
+                            <div class = "row">Skrydžio numeris: <?=$skrydzioNumeris?></div>
                             <div class = "row">Kryptis pirmyn: <?=$skrydisPirmyn?></div>
                             <div class = "row">Kryptis atgal: <?=$skrydisAtgal?></div>
                         </div>
@@ -179,19 +176,19 @@
                             <div class = "row">Keleivio pavardė: <?=$pavarde?></div>
                             <div class = "row">Keleivio asmens kodas: <?=$asmensKodas?></div>
                         </div>
-                        <div class = "col-sm">
-                            <div class = "row">Skrydzio perziura</div>
-                            <div class = "row">Skrydžio kaina: <?=$bilietoKaina?></div>
-                            <div class = "row">Bagažo kiekis: <?=$bagazas?>kg</div>
-                            <div class = "row">Bendra bilieto kaina: <?=$bendraKaina?></div>
+                        <div class = "col-sm skrydzio-perziura">
+                            <div class = "row"><strong>Bilieto peržiūra</strong></div>
+                            <div class = "row">Skrydžio kaina: <?=$bilietoKaina?> Eur</div>
+                            <div class = "row">Bagažo kiekis: <?=$bagazas?> kg</div>
+                            <div class = "row">Bendra bilieto kaina: <?=$bendraKaina?> Eur</div>
                         </div>
                     </div>
                     <div class = "row">Pastabos: <?=$pastabos?></div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Spausdinti bilietą</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Uždaryti langą</button>
             </div>
         </div>
     </div>

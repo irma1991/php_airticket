@@ -4,12 +4,19 @@ h3{
     padding-bottom: 20px;
 }
 
-.ticket{
-    height: 150px;
-    background-color: #005cbf;
-}
-
 .modal-backdrop{
     background-color: #ffffff;
     position: unset;
+}
+
+.modal-body{
+    background-color: #95999c;
+}
+
+.pavadinimas, .skrydzio-perziura{
+    background-color: beige;
+}
+
+.validation-erros ul{
+    list-style: none;
 }
