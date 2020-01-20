@@ -33,28 +33,28 @@
             $validation_errors[] = "Privalomas laukas: įveskite bagažo kiekį.";
         }
 
-        if (!preg_match('/\w{1,100}$/', $_POST['vardas'])) {
+        if (!preg_match('/\w{1,100}$/', trim(htmlspecialchars($_POST['vardas'])))) {
             $validation_errors[] = "Įvestas vardas neatitinka formato.";
         } else {
-            $_POST['vardas'];
+            $_POST['vardas'] = trim(htmlspecialchars($_POST['vardas']));
         }
 
-        if (!preg_match('/\w{1,100}/', $_POST['pavarde'])) {
+        if (!preg_match('/\w{1,100}/', trim(htmlspecialchars($_POST['pavarde'])))) {
             $validation_errors[] = "Įvesta pavardė neatitinka formato.";
         } else {
-            $_POST['pavarde'];
+            $_POST['pavarde'] = trim(htmlspecialchars($_POST['pavarde']));
         }
 
-        if (!preg_match('/^([3-6]\d{10})$/', $_POST['asmensKodas'])) {
+        if (!preg_match('/^([3-6]\d{10})$/', trim(htmlspecialchars($_POST['asmensKodas'])))) {
             $validation_errors[] = "Įvestas asmens kodas neatitinka formato.";
         } else {
-            $_POST['asmensKodas'];
+            $_POST['asmensKodas'] = trim(htmlspecialchars($_POST['asmensKodas']));
         }
 
-        if (!preg_match('/[\w\s{50,1000}]/i', $_POST['pastabos'])) {
+        if (!preg_match('/[\w\s{50,1000}]/i', trim(htmlspecialchars($_POST['pastabos'])))) {
             $validation_errors[] = "Įvesta pastaba neatitinka formato.";
         } else {
-            $_POST['pastabos'];
+            $_POST['pastabos'] = trim(htmlspecialchars($_POST['pastabos']));
         }
     }
 
